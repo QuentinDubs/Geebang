@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style_accueil.css') }}" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='geebang.png')}}">
+        <title>GeeBang</title>
+    </head>
+    <body>
+        <header>
+            <p class = "float_logo">
+                <img class = "image_logo" src ="/static/geebang.png" alt ="logo de GeeBang">
+            </p>
+            <button id="button_accueil" class = "button_header">Accueil</button>
+            <button id="button_Restaurateur" class = "button_header">Je suis restaurateur</button>
+            <button class = "button_header">J'utilise Gee'Box</button>
+            {% if session['login'] == True %}
+          <button onclick="location.href='/logout'" class = "button_connexion">Deconnexion</button>
+        {% else %}
+          <button id="modal_connexion_button" class = "button_connexion">Connexion</button>
+        {% endif %}
+
+        </header>
+        <center><div class="msg">{{ msg }}</div></center>
+        <div class = "bande_bleue">
+        </div>
+        <div class = "titre">
+            <p class = "float_boite">
+                <img class = "boite_g" src ="{{ url_for('static', filename='boite_geebang.png')}}">
+            </p>
+            <h1>GeeBang</h1>
+            <h2>Sauver la planète avec des boîtes, une grande innovation !</h2>
+            <button class= "button_CCM" id ="button_CCM" onclick= "scrollToCCM()"><span>Comment ça marche ?</span></button>
+        </div>
+        
+        <!--Modal-->
+        <form method="POST" action="/login">
+        <div id="modal_connexion" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Connexion</h3>
+                <div class="formulaire_connexion">
+                    <p>Adresse Mail</p>
+                    <input type="mail" id="mail" name="mail" placeholder="adresse@mail.com"required><br>
+                    <p margin-top= 5%>Mot de passe</p>
+                    <input type="password" id="password" placeholder="••••••••••••" name="motdepasse" minlength="8" required><br>
+                    <center>
+                    <a href="{{ url_for('register') }}" class="center"> S'inscrire </a>
+                </center>
+
+                </div>
+                <button type="submit" id="ConnexionButton" class="connexion_button">Connexion</button>
+            </div>
+        </div>
+            </form>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("modal_connexion");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("modal_connexion_button");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+        </script>
+<!-- fin Modal -->
+        <script type="text/javascript">
+    document.getElementById("button_Restaurateur").onclick = function () {
+        location.href ="{{ url_for('restaurateur') }}";
+        };
+    document.getElementById("button_accueil").onclick = function () {
+        location.href ="{{ url_for('accueil') }}";
+    };
+  </script>
+        
+
+        <div class = "section1">
+            <p class = "text1_s1">
+                Changeons notre mode de consommation...
+            </p>
+            <p class = "text1_s1">
+                Arrêtons de jeter, réutilisons pour un monde meilleur ! 
+            </p>
+            <p class = "text2_s1">
+                Pour réduire l'engorgement des poubelles, Geebang développe des emballages innovants, 
+                réutilisables et biosourcés pour la restauration rapide tout en assurant leur distribution, 
+                leur collecte et leur lavage.
+            </p>
+
+            <div class = "bloc1_s1">
+                <img class = "img_s1" src ="{{ url_for('static', filename='poubelle.png')}}">
+                <p class = "p_bloc_s1">Réduire les déchets à traiter</p>
+            </div>
+
+            <div class = "bloc2-3_s1">
+                <img class = "img_s1" src ="{{ url_for('static', filename='terre.png')}}">
+                <p class = "p_bloc_s1">Une démarche responsable</p>
+            </div>
+
+            <div class = "bloc2-3_s1">
+                <img class = "img_s1" src ="{{ url_for('static', filename='balance.png')}}">
+                <p class = "p_bloc_s1">Anticiper la loi anti-gaspillage</p>
+            </div>
+
+            <iframe class = "video_geebang" src="https://youtube.com/embed/d_3ciUUmf-c">
+            </iframe>
+        </div>
+
+        <div class = "section2" id = "CCM">
+            <div class = "h2_2">Une solution sur-mesure, éthique et éco-resposable !</div>
+            <img class = "img_s2" src ="{{ url_for('static', filename='CCM.png')}}">
+        </div>
+
+        <div class = "section3">
+            <div class = "text1_s3">Localiser les restaurants partenaires</div>
+            <div class = "text2_s3">Vous pouvez trouver et ramener les Gee'Box chez les restaurants partenaires. Le retour des emballages signifie le gain de point et de réduction.</div>
+        </div>
+
+
+        <footer class= "section4">
+            
+            <div class= "titre_s4">Rejoignez-nous !</div>
+            <div class= "bloc1_s4">
+                <div class= "sous-titre1_s4">GeeBang</div>
+                <table class= "table_s4">
+                    <tbody>
+                        <tr>
+                            <td><button class="button_s4">À propos</button></td>
+                            <td><button class="button_s4">CGV</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button_s4" onclick= "scrollToCCM()">Commment ça marche</button></td>
+                            <td><button class="button_s4">Politique de confidentialité</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button_s4">Trouver un restaurant</button></td>
+                            <td><button class="button_s4">Mentions légales</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="button_s4">Mon compte</button></td>
+                            <td><button class="button_s4">FAQ</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class= "bloc2_s4">
+                <div class="sous-titre2_s4">Nous rencontrer</div>
+                <button class="button_s4">Contactez-nous</button>
+                <div class= "sous-blocs_s4">
+                    <input id="btn_facebook" class="bouton_facebook" type="image" src="/static/facebook.png" name="facebook_button" value="Facebook" 
+                                onMouseOver="this.src='/static/facebook_dark.png'"
+                                onMouseOut="this.src='/static/facebook.png'">
+
+                    <input id="btn_insta" class="bouton_insta" type="image" src="/static/insta.png" name="insta_button" value="Instagram" 
+                                onMouseOver="this.src='/static/insta_dark.png'"
+                                onMouseOut="this.src='/static/insta.png'">
+
+                    <input id="btn_linkedin" class="bouton_linkedin" type="image" src="/static/linkedin.png" name="linkedin_button" value="Linkedin" 
+                                onMouseOver="this.src='/static/linkedin_dark.png'"
+                                onMouseOut="this.src='/static/linkedin.png'">
+                </div>
+            </div>
+
+            <div class= "bloc3_s4">
+                <div class="sous-titre1_s4">Inscrivez-vous à notre newsletter :</div>
+                <form class="form_s4">
+                <input type="mail" placeholder="Adresse mail" name="email" id="email" required>
+                    <button type="submit" class="newsletter_button">Inscription</button>
+                </form>
+            </div>
+        </footer>
+    </body>
+</html>
+
+<script>
+    function scrollToCCM()
+    {
+      var elmnt = document.getElementById("CCM");
+      elmnt.scrollIntoView();
+    }
+</script>
+
+<script>
+    function scrollToLoc()
+    {
+        var elmnt = document.getElementById("Loc");
+        elmnt.scrollIntoView();
+    }
+</script>

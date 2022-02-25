@@ -1,0 +1,117 @@
+.hidden { display: none; }
+
+.logo_geebang
+{
+  padding-top: 0px;
+    width: 5%;
+    float: right;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #55d4b6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.titre {
+  color: #000000;
+  font-size: 40px;
+}
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  vertical-align: bottom;
+}
+  input[type="checkbox"]::before{
+    position: absolute;
+    content: '';
+    display: block;
+    top: 2px;
+    left: 7px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+  input[type="checkbox"]:checked{
+    color:#ffffff;
+    border-color:#04AA6D;
+    background:#04AA6D;
+  }
+
+  input[type="checkbox"]:checked::before{
+    opacity: 1;
+  }
+
+  label::before {
+    clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+  }
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+

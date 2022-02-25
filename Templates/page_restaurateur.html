@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styleRestaurateur.css') }}" />
+        <link rel="shortcut icon" href="{{ url_for('static', filename='geebang.png')}}">
+        <title>GeeBang</title>
+    </head>
+    <body>
+        <header>
+            <p class = "float_logo">
+                <img class = "image_logo" src ="/static/geebang.png" alt ="logo de GeeBang">
+            </p>
+            <button class = "button_header" id="button_accueil">Accueil</button>
+            <button id="button_Restaurateur" class = "button_header">Je suis restaurateur</button>
+            <button class = "button_header">J'utilise Gee'Box</button>
+            {% if session['login'] == True %}
+          <button onclick="location.href='/logout'" class = "button_connexion">Deconnexion</button>
+        {% else %}
+          <button id="modal_connexion_button" class = "button_connexion">Connexion</button>
+        {% endif %}
+        </header>
+        <div class = "bande_bleue">
+        </div>
+        <div class = "titre">
+            <button class= "button_titre_restaurateur"><span>Notre offre</span></button>
+            <button class= "button_titre_restaurateur"><span>Nos avantages</span></button>
+            <button class= "button_titre_restaurateur"><span>Demande de devis</span></button>
+
+            <div class="h2_r">DEVENEZ RESTAURANT PARTENAIRE DE</div>
+            <img class = "geebang_text" src ="{{ url_for('static', filename='geebang_text.png')}}">
+        </div>
+        
+        <!--Modal-->
+        <form method="POST" action="/login">
+            <div id="modal_connexion" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Connexion</h3>
+                    <div class="formulaire_connexion">
+                        <p>Adresse Mail</p>
+                        <input type="mail" id="mail" name="mail" placeholder="adresse@mail.com"required><br>
+                        <p margin-top= 5%>Mot de passe</p>
+                        <input type="password" id="password" placeholder="••••••••••••" name="motdepasse" minlength="8" required><br>
+                        <center>
+                        <a href="{{ url_for('register') }}" class="center"> S'inscrire </a>
+                    </center>
+    
+                    </div>
+                    <button type="submit" id="ConnexionButton" class="connexion_button">Connexion</button>
+                </div>
+            </div>
+                </form>
+        
+        <script>
+            // Get the modal
+            var modal = document.getElementById("modal_connexion");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("modal_connexion_button");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+        </script>
+
+        <!-- fin Modal -->
+
+        <div class = "section1">
+            <p class = "text1_s1_r">
+                Notre offre
+            </p>
+            <p class = "text2_s1_r">
+                Optez pour une solution durable adaptée à votre établissement pour en finir avec la consommation d'emballage à usage unique !
+            </p>
+
+            <div class = "bloc1_s1_r"> 
+                <div class="titre_blocs_s1_r"> Offre liberté</div>
+                <hr class="ligne_s1_r">
+                <p class="p_blocs_s1_r">Achat des Gee'Box en fonction du nombre souhaité</p>
+                <p class="p_blocs_s1_r">Notre système de récompense est offert</p>
+            </div>
+
+            <div class = "bloc2-3_s1_r">
+                <div class="titre_blocs_s1_r"> Offre essentiel</div>
+                <hr class="ligne_s1_r">
+                <p class="p_blocs_s1_r">Nettoyage industriel  de vos propres emballages : céramique, inox, plastique et verre</p>
+                <p class="p_blocs_s1_r">Collecte des emballages sales</p>
+                <p class="p_blocs_s1_r">Retour des emballages dans votre établissement</p>
+            </div>
+
+            <div class = "bloc2-3_s1_r">
+                <div class="titre_blocs_s1_r"> Offre confort</div>
+                <hr class="ligne_s1_r">
+                <p class="p_blocs_s1_r">Location des emballages Gee'Box en fonction de vos besoins</p>
+                <p class="p_blocs_s1_r">Collecte des emballages sales</p>
+                <p class="p_blocs_s1_r">Nettoyage industriel</p>
+                <p class="p_blocs_s1_r">Redistribution des emballages Gee'Box dans votre établissement</p>
+            </div>
+        </div>
+
+        <div class = "section2">
+            <p class = "text1_s2_r">Pourquoi Gee'Box ?</p>
+            <p class = "text2_s2_r">Découvrez les avantages Gee'box en cliquant sur les icônes :</p>
+            <img class = "img_s2_r" src ="{{ url_for('static', filename='boite_geebang.png')}}">
+        </div>
+
+        <form method="POST" action="/DemandeDevis">
+        <div class = "section3">
+            <div class = "text1_s3_r">Demande de devis</div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-label">
+                        <label for="etablissement">Établissement</label>
+                    </div>
+                    <div class="col-input">
+                        <input type="text" id="etablissement" name="devis_etab" placeholder="Établissement*">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-label">
+                        <label for="nom">Nom</label>
+                    </div>
+                    <div class="col-input">
+                        <input type="text" id="nom" name="devis_nom" placeholder="Nom*">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-label">
+                        <label for="prenom">Prénom</label>
+                    </div>
+                    <div class="col-input">
+                        <input type="text" id="prenom" name="devis_prenom" placeholder="Prénom*">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-label">
+                        <label for="mail">Mail</label>
+                    </div>
+                    <div class="col-input">
+                        <input type="mail" id="mail" name="devis_mail" placeholder="Mail*">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-label">
+                        <label for="ville">Ville</label>
+                    </div>
+                    <div class="col-input">
+                        <input type="text" id="ville" name="devis_ville" placeholder="Ville*">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col_label">
+                        <label for="message">Message</label>
+                    </div>
+                    <div class="col-input">
+                        <textarea id="message" name="devis_message" placeholder="Message" style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Envoyer">
+                </div>
+            </div>
+        </div>
+            </form>
+
+        <footer>
+
+        </footer>
+    </body>
+</html>
+
+<script type="text/javascript">
+    document.getElementById("button_accueil").onclick = function () {
+        location.href ="{{ url_for('accueil') }}";
+    };
+</script>

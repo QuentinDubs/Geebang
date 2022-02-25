@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/register_style.css" />
+<link rel="shortcut icon" href="/static/geebang.png">
+<title>Inscription GeeBang</title>
+</head>
+<body>
+
+<form method="POST" action="/register">
+  <div class="container" >
+    <img src="/static/geebang.png" class="logo_geebang">
+    <h1 class="titre">Inscription</h1>
+    <hr>
+    <label for="nom"><b>Nom</b></label>
+    <input type="text" name="nom" placeholder="NOM" id="nom" maxlength="50" required><br>
+
+    <label for="prenom"><b>Prenom</b></label>
+    <input type="text" name="prenom" placeholder="PRENOM" id="prenom" maxlength="50" required><br>
+
+    <label for="email"><b>Adresse mail</b></label>
+    <input type="text" placeholder="adresse@mail.com" name="mail" id="email" required>
+
+    <label for="psw"><b>Mot de passe</b></label>
+    <input type="password" placeholder="••••••••••••" name="motdepasse" id="psw" required>
+
+    <label for="psw-repeat"><b>Confirmation du mot de passe</b></label>
+    <input type="password" placeholder="••••••••••••" name="psw-repeat" id="psw-repeat" required>
+
+    <input type="checkbox" id="restaurateur" name="check_restau" value="restaurateur" onchange="toggleCheckbox()">
+    <label for="restaurateur" class="isRestaurateurLabel"> Je suis un restaurateur</label>
+    <input type="text" class="hidden" id="code_restau" name="code_restaurateur" placeholder="Code Restaurateur" maxlength="10">
+    <br>
+    <hr>
+
+    <button type="submit" class="registerbtn">Inscription</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Vous avez déjà un compte ? <a href="/">Se connecter</a>.</p>
+  </div>
+</form>
+
+</body>
+</html>
+
+<script>
+  function toggleCheckbox()
+ {
+  var x = document.getElementById("code_restau");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+ }
+</script>

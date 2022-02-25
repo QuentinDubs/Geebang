@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geebang - Interface Utilisateur</title>
+</head>
+<body>
+    <!--<img class="msg" src="{{ qrcode("{{ code }}") }}"> -->
+    <h1>Scanner un QR Code</h1>
+    <form method="POST" action="/PosterQR">  
+        <center>
+            QR Code : <input type="file" name="image" accept="image/*" capture="environment">
+            <input type = "submit">
+        </center>
+        
+    </form>
+</body>
+</html>
